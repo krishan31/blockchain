@@ -1,0 +1,94 @@
+
+<script>
+// class User {
+//     constructor(name, age, phone, address) {
+
+//         this.name = name;
+//         this.age = age;
+//         this.phone = phone;
+//         this.address = address;
+
+//     }
+// }
+
+// class Address {
+//     constructor(zip, street){
+//         this.zip = zip;
+//         this.street = street;
+//     }
+// }
+
+// const user = new User('Krishan', 25, +924574, new Address(110010, 'New Delhi'));
+// console.log(user);
+
+
+
+
+
+
+
+
+
+
+
+
+class User {
+    constructor(name){
+        this.name = name  //we will not use this user class to create user 
+    }
+}
+
+class UserBuilder {
+    constructor(name){
+        this.user = new User(name)
+    }
+
+    setAge(age){
+        this.user.age = age
+        return this
+    }
+    setPhone(phone){
+        this.user.phone = phone;
+        return this
+    }
+    setaddress(address){
+        this.user.address = address
+        return this
+    }
+
+    build(){
+        return this.user //this function call and return the user object
+    }
+}
+
+const user = new UserBuilder('bob').setPhone(+6345453).setAge(10).setaddress({street : 'krishan', city : 'new delhi'}).build();
+console.log(user);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// advance javascript builder pattern
+
+class User1 {
+    constructor(name, {age, phone = '654545', address } = {}) {
+        this.name = name
+        this.age = age
+        this.phone = phone
+        this.address = address
+    }
+}
+
+const user1 = new User1('bob', {age: 10, phone: 5421,  address:{street : 'newdelhi', city: 'delhi'}})
+console.log(user1);
+
+</script>
